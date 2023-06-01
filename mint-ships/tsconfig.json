@@ -20,5 +20,5 @@
     }
   },
   "include": ["**/*.ts", "**/**.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".vscode"]
+  "exclude": ["mint-ships/node_modules", ".vscode"]
 }
