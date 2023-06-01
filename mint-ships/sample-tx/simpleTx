@@ -1,12 +1,12 @@
-import { payer, testWallet, connection } from "@/lib/vars";
-import { explorerURL, printConsoleSeparator } from "@/lib/helpers";
+import { payer, testWallet, connection } from "../lib/vars";
+import { explorerURL, printConsoleSeparator } from "../lib/helpers";
 
 import {
   Keypair,
   LAMPORTS_PER_SOL,
   SystemProgram,
   TransactionMessage,
-  VersionTransaction,
+  VersionedTransaction,
 } from "@solana/web3.js"
 
 (async () => {
@@ -36,7 +36,7 @@ import {
 
   //create instruction
   const createAccountIx = SystemProgram.createAccount({
-    fromPubkey: payer.publickKey,
+    fromPubkey: payer.publicKey,
     newAccountPubkey: keypair.publicKey,
     lamports,
     space,
@@ -51,7 +51,7 @@ import {
     instructions: [createAccountIx],
   }).compileToV0Message();
 
-  const tx = new VersionTransaction(message);
+  const tx = new VersionedTransaction(message);
 
   tx.sign([payer]);
 
